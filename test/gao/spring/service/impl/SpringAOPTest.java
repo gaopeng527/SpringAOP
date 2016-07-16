@@ -20,6 +20,7 @@ public class SpringAOPTest {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		PersonService personService = (PersonService) applicationContext.getBean("personService");
 		personService.save("xxx");
+//		personService.getPersonName(1);
 	}
 
 }

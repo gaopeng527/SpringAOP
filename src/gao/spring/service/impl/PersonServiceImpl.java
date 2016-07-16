@@ -6,6 +6,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public void save(String name) {	
+//		throw new RuntimeException("运行时异常！");
 		System.out.println("这是save()方法！");
 	}
 
