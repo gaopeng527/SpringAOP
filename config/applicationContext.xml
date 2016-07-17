@@ -16,4 +16,17 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<bean id="myInterceptor" class="gao.spring.service.MyInterceptor"></bean>
 	<bean id="personService" class="gao.spring.service.impl.PersonServiceImpl"></bean>
+	
+	<!-- 以XML的方式来配置AOP切面 -->
+	<bean id="myInterceptorXML" class="gao.spring.service.MyInterceptorXML"></bean>
+	<aop:config>
+		<aop:aspect id="asp" ref="myInterceptorXML">
+			<aop:pointcut id="mycut" expression="execution(* gao.spring.service.impl.PersonServiceImpl.*(..))"/>
+			<aop:before pointcut-ref="mycut" method="doAccessCheck"/>
+			<aop:after pointcut-ref="mycut" method="doAfter"/>
+			<aop:after-returning pointcut-ref="mycut" method="doAfterReturning"/>
+			<aop:after-throwing pointcut-ref="mycut" method="doAfterThrowing"/>
+			<aop:around pointcut-ref="mycut" method="doBasicProfiling"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
