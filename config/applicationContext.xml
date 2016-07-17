@@ -21,6 +21,7 @@
 	<bean id="myInterceptorXML" class="gao.spring.service.MyInterceptorXML"></bean>
 	<aop:config>
 		<aop:aspect id="asp" ref="myInterceptorXML">
+			<!-- execution(* gao.spring.service..*.*(..))" -->
 			<aop:pointcut id="mycut" expression="execution(* gao.spring.service.impl.PersonServiceImpl.*(..))"/>
 			<aop:before pointcut-ref="mycut" method="doAccessCheck"/>
 			<aop:after pointcut-ref="mycut" method="doAfter"/>
